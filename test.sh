@@ -1,7 +1,4 @@
-#add multiple tests
-#add bonus
 #add leaks test
-
 
 RED="\e[31m"
 GREEN="\e[32m"
@@ -44,9 +41,7 @@ then
 elif [[ "$temp" = "KO" ]]
 then
 	printf "${RED}KO${NOCOLOR}\n"
-else
-	printf "${RED}ERROR${NOCOLOR}\n"
 fi
 rm -rf temp_result
 printf "\n\n"
-echo "test_case and output is in trace"
+echo "test_case and output are in trace"

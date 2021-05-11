@@ -8,7 +8,7 @@ First, go to the root of your repository, which is where we can find Makefile
 
 ```cd push_swap_tester```
 
-Then there are three types of tests :
+Then there are three test files :
 
 1. basic test
 
@@ -17,6 +17,10 @@ Then there are three types of tests :
 2. visualization mode (debug mode)
 
 ```bash debug.sh <stack size>```
+
+or
+
+```bash debug.sh clean <stack size>```
 
 3. loop mode
 
@@ -30,7 +34,7 @@ KO : Wrong answer
 
 TLE : time limit exceeded (You can edit the variable ```TIME_LIMIT``` in *.sh file)
 
-Error : Unknown instructions
+ERROR : Unknown instructions
 
 Contact : 
 
