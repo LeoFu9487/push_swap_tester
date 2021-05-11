@@ -1,6 +1,6 @@
 # push_swap_tester
 
-### usage :
+### Usage :
 
 First, go to the root of your repository, which is where we can find Makefile
 
@@ -10,23 +10,27 @@ First, go to the root of your repository, which is where we can find Makefile
 
 Then there are three test files :
 
-1. basic test
+###### 1. basic test
 
 ```bash test.sh <stack size>```
 
-2. visualization mode (debug mode)
+###### 2. visualization mode (debug mode)
+
+generate and visualize random numbers : 
 
 ```bash debug.sh <stack size>```
 
 or
 
+generate and visualize numbers from 0 to n - 1
+
 ```bash debug.sh clean <stack size>```
 
-3. loop mode
+###### 3. loop mode
 
 ```bash loop.sh <stack size> <loop times>```
 
-For the result : 
+### Result : 
 
 OK : answer correct
 
