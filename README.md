@@ -30,7 +30,7 @@ generate and visualize numbers from 0 to n - 1
 
 ```bash loop.sh <stack size> <loop times>```
 
-### Result : 
+### Result 
 
 OK : answer correct
 
@@ -39,6 +39,12 @@ KO : Wrong answer
 TLE : time limit exceeded (You can edit the variable ```TIME_LIMIT``` in *.sh file)
 
 ERROR : Unknown instructions
+
+### Clean
+
+```bash clean.sh```
+
+can remove every test case and output file
 
 Contact : 
 

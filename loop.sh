@@ -5,6 +5,13 @@ GREEN="\e[32m"
 NOCOLOR="\e[0m"
 TIME_LIMIT=1.0
 
+
+if [ $# -lt 2 ]
+then
+	printf "${RED}Error : not enough arguments${NOCOLOR}\n"
+	printf "Usage : bash loop.sh <stack size> <loop times>"
+	exit 1
+fi
 for ((i=1;i<=$2;i++));
 do
 ./files/better_random_test_cases $@ > ./trace_loop/test_case_$i.txt
