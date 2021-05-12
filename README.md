@@ -14,6 +14,10 @@ Then there are two modes of test :
 
 ```bash loop.sh <stack size> <loop times>```
 
+result of the following command
+
+```bash loop.sh 100 10```
+
 ![example](https://user-images.githubusercontent.com/70040774/118051305-0b7fa580-b381-11eb-9568-36b44748b10f.png)
 
 
@@ -23,6 +27,10 @@ generate and visualize random numbers :
 
 ```bash debug.sh <stack size>```
 
+result of the following command
+
+```bash debug.sh 10```
+
 ![example2](https://user-images.githubusercontent.com/70040774/118052309-cceaea80-b382-11eb-8c9d-39675e9143ba.png)
 
 or
@@ -30,6 +38,10 @@ or
 generate and visualize numbers from 0 to n - 1
 
 ```bash debug.sh clean <stack size>```
+
+result of the following command
+
+```bash debug.sh clean 10```
 
 ![example3](https://user-images.githubusercontent.com/70040774/118052350-daa07000-b382-11eb-95e4-c8715f70cc05.png)
 
