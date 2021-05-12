@@ -12,6 +12,8 @@ then
 	printf "Usage : bash loop.sh <stack size> <loop times>"
 	exit 1
 fi
+make -C ./files/
+g++ -O3 ./files/main.cpp -o ./files/better_random_test_cases
 for ((i=1;i<=$2;i++));
 do
 ./files/better_random_test_cases $@ > ./trace_loop/test_case_$i.txt
@@ -38,7 +40,7 @@ FLAG="${GREEN}OK${NOCOLOR}"
 for ((i=1;i<=$2;i++));
 do
 printf "$i		"
-timeout $TIME_LIMIT ../push_swap $(cat ./trace_loop/test_case_$i.txt) > ./trace_loop/output_$i.txt
+../push_swap $(cat ./trace_loop/test_case_$i.txt) > ./trace_loop/output_$i.txt
 time_check=$(echo $?)
 printf "instructions amounts : "
 count=$(cat ./trace_loop/output_$i.txt | wc -l)
@@ -83,3 +85,4 @@ printf "maximum instructions	$max (test case $max_tag)\n"
 printf "minimum instructions	$min (test case $min_tag)\n"
 printf "average instructions	$average\n"
 echo "test_case and output are in trace_loop"
+rm ./files/better_random_test_cases
