@@ -3,13 +3,19 @@
 RED="\e[31m"
 GREEN="\e[32m"
 NOCOLOR="\e[0m"
-TIME_LIMIT=5.0
+TIME_LIMIT=2.0
+
+make bonus -C ./files/
 
 if [[ "$1" = "clean" ]]
 then
+	g++ -O3 ./files/gen.cpp -o ./files/generate_clean_test_cases
 	./files/generate_clean_test_cases $2 > ./trace_debug/test_case.txt
+	rm -rf ./files/generate_clean_test_cases
 else
-	./files/generate_random_test_cases $1 > ./trace_debug/test_case.txt
+	g++ -O3 ./files/main.cpp -o ./files/better_random_test_cases
+	./files/better_random_test_cases $1 > ./trace_debug/test_case.txt
+	rm -rf ./files/better_random_test_cases
 fi
 
 make -C ../
@@ -24,18 +30,17 @@ else
 	exit 1
 fi
 
-timeout $TIME_LIMIT ../push_swap $(cat ./trace_debug/test_case.txt) > ./trace_debug/output.txt
-
-time_check=$(echo $?)
-
-if [[ "$time_check" = "124" ]]
-then
+(../push_swap $(cat ./trace_debug/test_case.txt) > ./trace_debug/output.txt) & pid=$!
+(sleep $TIME_LIMIT && kill -HUP $pid) 2>/dev/null & watcher=$!
+if wait $pid 2>/dev/null; then
+	TLEFLAG=0
+else
 	printf "${RED}TLE${NOCOLOR}\n"
 	exit 1
 fi
 
-cat ./trace_debug/output.txt > instructions
 
+cat ./trace_debug/output.txt > instructions
 ./files/checker_bonus $(cat ./trace_debug/test_case.txt)
-rm instructions
+rm -rf instructions
 echo "test_case and output are in trace_debug"

@@ -6,7 +6,7 @@
 /*   By: yfu <yfu@student.42lyon.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/04 21:22:47 by yfu               #+#    #+#             */
-/*   Updated: 2021/05/12 13:22:11 by yfu              ###   ########lyon.fr   */
+/*   Updated: 2021/05/12 17:00:41 by yfu              ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	main(int argc, char **argv)
 
 	arr_size = get_nbr_in_line(&arr, argc, argv);
 	instructions = NULL;
-	fd = 0;
+	fd = open("instructions", O_RDONLY);
 	if (fd < 0)
 		error_exit();
 	while (get_next_line(fd, &line) == 1)
@@ -33,6 +33,7 @@ int	main(int argc, char **argv)
 	}
 	if (arr_size == 0)
 		normal_exit();
+	close(fd);
 	check_bonus(arr, arr_size, instructions);
 	return (0);
 }

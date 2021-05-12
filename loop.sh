@@ -41,7 +41,6 @@ for ((i=1;i<=$2;i++));
 do
 printf "$i	"
 (../push_swap $(cat ./trace_loop/test_case_$i.txt) > ./trace_loop/output_$i.txt) & pid=$!
-#(sleep $TIME_LIMIT && kill -HUP $pid) 2> ../push_swap $(cat ./trace_loop/test_case_$i.txt) > ./trace_loop/output_$i.txt
 (sleep $TIME_LIMIT && kill -HUP $pid) 2>/dev/null & watcher=$!
 if wait $pid 2>/dev/null; then
 	TLEFLAG=0
