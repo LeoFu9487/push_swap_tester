@@ -1,9 +1,7 @@
-#leaks, time
-
 RED="\e[31m"
 GREEN="\e[32m"
 NOCOLOR="\e[0m"
-TIME_LIMIT=1.0
+TIME_LIMIT=2.0
 
 
 if [ $# -lt 2 ]
@@ -42,10 +40,17 @@ LEAKFLAG="${GREEN}NO LEAKS${NOCOLOR}"
 for ((i=1;i<=$2;i++));
 do
 printf "$i	"
-../push_swap $(cat ./trace_loop/test_case_$i.txt) > ./trace_loop/output_$i.txt
-time_check=$(echo $?)
-#add timeout
+(../push_swap $(cat ./trace_loop/test_case_$i.txt) > ./trace_loop/output_$i.txt) & pid=$!
+#(sleep $TIME_LIMIT && kill -HUP $pid) 2> ../push_swap $(cat ./trace_loop/test_case_$i.txt) > ./trace_loop/output_$i.txt
+(sleep $TIME_LIMIT && kill -HUP $pid) 2>/dev/null & watcher=$!
+if wait $pid 2>/dev/null; then
+	TLEFLAG=0
+else
+	TLEFLAG=1
+fi
 
+if [[ -TLEFLAG = "0" ]];
+then
 leaks -atExit -- ../push_swap $(cat ./trace_loop/test_case_$i.txt) > a
 cat a | grep ": 0 leaks for 0 total leaked bytes" > b
 if [[ -s b ]];
@@ -58,6 +63,9 @@ fi
 rm -rf a
 rm -rf b
 printf "$TEMPLEAK	"
+else
+printf "${GREEN}NO LEAKS${NOCOLOR}	"
+fi
 #add timeout
 
 printf "instructions amounts : "
@@ -75,7 +83,7 @@ then
 	min_tag=$i
 fi
 printf "	checker result : "
-if [[ "$time_check" = "124" ]]
+if [[ "$TLEFLAG" = "1" ]]
 then
 	printf "${RED}TLE${NOCOLOR}\n"
 	FLAG="${RED}KO${NOCOLOR}"
