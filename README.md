@@ -1,8 +1,5 @@
 # push_swap_tester
 
-![example](https://user-images.githubusercontent.com/70040774/118051305-0b7fa580-b381-11eb-9568-36b44748b10f.png)
-
-
 ### Usage :
 
 First, go to the root of your repository, which is where we can find Makefile
@@ -17,17 +14,24 @@ Then there are two modes of test :
 
 ```bash loop.sh <stack size> <loop times>```
 
+![example](https://user-images.githubusercontent.com/70040774/118051305-0b7fa580-b381-11eb-9568-36b44748b10f.png)
+
+
 ###### 2. visualization mode (debug mode)
 
 generate and visualize random numbers : 
 
 ```bash debug.sh <stack size>```
 
+![example2](https://user-images.githubusercontent.com/70040774/118052309-cceaea80-b382-11eb-8c9d-39675e9143ba.png)
+
 or
 
 generate and visualize numbers from 0 to n - 1
 
 ```bash debug.sh clean <stack size>```
+
+![example3](https://user-images.githubusercontent.com/70040774/118052350-daa07000-b382-11eb-95e4-c8715f70cc05.png)
 
 ### Result 
 
