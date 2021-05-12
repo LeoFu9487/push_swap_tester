@@ -77,7 +77,7 @@ void	check_bonus(int *arr, int arr_size, t_list *instructions)
 	last_operation = "Init a and b";
 	clearscreen();
 	display_stacks(stack, last_operation);
-	ft_putendl_fd("press space to continue", 1);
+	ft_putendl_fd("press enter to continue", 1);
 	sub(cur_instruction, stack, last_operation);
 	ok(instructions);
 }
