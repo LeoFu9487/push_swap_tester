@@ -1,5 +1,8 @@
 # push_swap_tester
 
+![example](https://user-images.githubusercontent.com/70040774/118051305-0b7fa580-b381-11eb-9568-36b44748b10f.png)
+
+
 ### Usage :
 
 First, go to the root of your repository, which is where we can find Makefile
@@ -8,9 +11,13 @@ First, go to the root of your repository, which is where we can find Makefile
 
 ```cd push_swap_tester```
 
-Then there are two test files :
+Then there are two modes of test :
 
-###### 1. visualization mode (debug mode)
+###### 1. loop mode
+
+```bash loop.sh <stack size> <loop times>```
+
+###### 2. visualization mode (debug mode)
 
 generate and visualize random numbers : 
 
@@ -21,10 +28,6 @@ or
 generate and visualize numbers from 0 to n - 1
 
 ```bash debug.sh clean <stack size>```
-
-###### 2. loop mode
-
-```bash loop.sh <stack size> <loop times>```
 
 ### Result 
 
