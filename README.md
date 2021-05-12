@@ -8,13 +8,9 @@ First, go to the root of your repository, which is where we can find Makefile
 
 ```cd push_swap_tester```
 
-Then there are three test files :
+Then there are two test files :
 
-###### 1. basic test
-
-```bash test.sh <stack size>```
-
-###### 2. visualization mode (debug mode)
+###### 1. visualization mode (debug mode)
 
 generate and visualize random numbers : 
 
@@ -26,7 +22,7 @@ generate and visualize numbers from 0 to n - 1
 
 ```bash debug.sh clean <stack size>```
 
-###### 3. loop mode
+###### 2. loop mode
 
 ```bash loop.sh <stack size> <loop times>```
 
