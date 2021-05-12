@@ -1,4 +1,4 @@
-#add leaks test
+#leaks, time
 
 RED="\e[31m"
 GREEN="\e[32m"
@@ -36,12 +36,30 @@ declare -i total=0
 declare -i count=0
 declare -i max=0
 declare -i min=1000000000
+
 FLAG="${GREEN}OK${NOCOLOR}"
+LEAKFLAG="${GREEN}NO LEAKS${NOCOLOR}"
 for ((i=1;i<=$2;i++));
 do
-printf "$i		"
+printf "$i	"
 ../push_swap $(cat ./trace_loop/test_case_$i.txt) > ./trace_loop/output_$i.txt
 time_check=$(echo $?)
+#add timeout
+
+leaks -atExit -- ../push_swap $(cat ./trace_loop/test_case_$i.txt) > a
+cat a | grep ": 0 leaks for 0 total leaked bytes" > b
+if [[ -s b ]];
+then
+	TEMPLEAK="${GREEN}NO LEAKS${NOCOLOR}"
+else
+	TEMPLEAK="${RED}LEAKS	${NOCOLOR}"
+	LEAKFLAG="${RED}LEAKS	${NOCOLOR}"
+fi
+rm -rf a
+rm -rf b
+printf "$TEMPLEAK	"
+#add timeout
+
 printf "instructions amounts : "
 count=$(cat ./trace_loop/output_$i.txt | wc -l)
 printf "$count "
@@ -84,5 +102,6 @@ printf "total instructions	$total\n"
 printf "maximum instructions	$max (test case $max_tag)\n"
 printf "minimum instructions	$min (test case $min_tag)\n"
 printf "average instructions	$average\n"
+printf "memory			$LEAKFLAG\n"
 echo "test_case and output are in trace_loop"
 rm ./files/better_random_test_cases
