@@ -48,7 +48,7 @@ else
 	TLEFLAG=1
 fi
 
-if [[ -TLEFLAG = "0" ]];
+if [[ "$TLEFLAG" = "0" ]];
 then
 leaks -atExit -- ../push_swap $(cat ./trace_loop/test_case_$i.txt) > a
 cat a | grep ": 0 leaks for 0 total leaked bytes" > b
