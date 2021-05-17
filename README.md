@@ -2,7 +2,7 @@
 
 ### Usage :
 
-First, go to the root of your repository, which is where we can find Makefile
+First, go to the root of your repository, which is where we can find your Makefile
 
 ```git clone https://github.com/LeoFu9487/push_swap_tester.git```
 
@@ -54,6 +54,8 @@ KO : Wrong answer
 TLE : time limit exceeded (You can edit the variable ```TIME_LIMIT``` in *.sh file)
 
 ERROR : Unknown instructions
+
+Valgrind not found : We can't test your memory leaks with command leaks
 
 ### Clean
 

@@ -50,17 +50,24 @@ fi
 
 if [[ "$TLEFLAG" = "0" ]];
 then
-leaks -atExit -- ../push_swap $(cat ./trace_loop/test_case_$i.txt) > a
+leaks -atExit -- ../push_swap $(cat ./trace_loop/test_case_$i.txt) > a 2>c
 cat a | grep ": 0 leaks for 0 total leaked bytes" > b
 if [[ -s b ]];
 then
 	TEMPLEAK="${GREEN}NO LEAKS${NOCOLOR}"
 else
+	if [[ -s c ]];
+	then
+		TEMPLEAK="Valgrind not found"
+		LEAKFLAG="Valgrind not found"
+	else
 	TEMPLEAK="${RED}LEAKS	${NOCOLOR}"
 	LEAKFLAG="${RED}LEAKS	${NOCOLOR}"
+	fi
 fi
 rm -rf a
 rm -rf b
+rm -rf c
 printf "$TEMPLEAK	"
 else
 printf "${GREEN}NO LEAKS${NOCOLOR}	"
