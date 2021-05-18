@@ -11,6 +11,7 @@ using namespace std;
 
 int main(int ac, char **av)
 {
+    FAST
     std::random_device rd;
     std::mt19937::result_type seed = rd() ^ (
             (std::mt19937::result_type)

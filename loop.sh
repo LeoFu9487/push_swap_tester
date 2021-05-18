@@ -70,7 +70,7 @@ rm -rf b
 rm -rf c
 printf "$TEMPLEAK	"
 else
-printf "${GREEN}NO LEAKS${NOCOLOR}	"
+printf "		"
 fi
 #add timeout
 
