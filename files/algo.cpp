@@ -152,7 +152,7 @@ int main(int ac, char **av)
 //step 1 : simplify numbers
     
 
-	vector<int> copy_array(array);
+	vector<int> copy_array(array), copy(array);
 	sort(copy_array.begin(), copy_array.end());
 
 	{
@@ -178,11 +178,11 @@ int main(int ac, char **av)
 
     for(int i = 0 ; i < array.size() ; ++i)
     {
-        printf("%d\t->\t%d\n", copy_array[i], array[i]);
+        printf("%d\t->\t%d\n", copy[i], array[i]);
     }
 
     printf("\n\nOriginal input : ");
-    for(int i = 0 ; i < array.size() ; ++i) printf("%d ", copy_array[i]);
+    for(int i = 0 ; i < array.size() ; ++i) printf("%d ", copy[i]);
     printf("\n\nSimplified arr : ");
     for(int i = 0 ; i < array.size() ; ++i) printf("%d ", array[i]);
     printf("\n\npress enter to continue ...");
