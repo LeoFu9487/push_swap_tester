@@ -21,7 +21,7 @@ result of the following command
 ![example](https://user-images.githubusercontent.com/70040774/118051305-0b7fa580-b381-11eb-9568-36b44748b10f.png)
 
 
-###### 2. visualization mode (debug mode)
+###### 2. debug mode
 
 generate and visualize random numbers : 
 
@@ -69,3 +69,16 @@ yfu@student.42lyon.fr
 
 Or you can also DM me on the slack
 
+### Visualize radix sort
+
+This is a visualization for this article
+
+https://medium.com/台灣人-ecole42/cursus-push-swap-582d5108c537
+
+Type following command and you'll see
+
+```bash visualize_radix_sort.sh <numbers> ```
+
+For example
+
+```bash visualize_radix_sort.sh 9 4 8 7 ```
