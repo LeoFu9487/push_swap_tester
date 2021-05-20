@@ -47,15 +47,15 @@ result of the following command
 
 ### Result 
 
-OK : answer correct
+OK : Answer Correct
 
-KO : Wrong answer
+KO : Wrong Answer
 
-TLE : time limit exceeded (You can edit the variable ```TIME_LIMIT``` in *.sh file)
+TLE : Time Limit Exceeded (You can edit the variable ```TIME_LIMIT``` in *.sh file)
 
-ERROR : Unknown instructions
+ERROR : Unknown Instructions
 
-Valgrind not found : We can't test your memory leaks with command leaks
+Valgrind not found : can't test your memory with command ```leaks```
 
 ### Clean
 
@@ -63,42 +63,8 @@ Valgrind not found : We can't test your memory leaks with command leaks
 
 can remove every test case and output file
 
-Contact : 
+### Contact : 
 
 yfu@student.42lyon.fr
 
-Or you can also DM me on the slack
-
-### Visualize Radix Sort
-
-First, read the algorithm in the following article :
-
-Chinese version :
-
-https://medium.com/台灣人-ecole42/cursus-push-swap-582d5108c537
-
-English version : 
-
-To be continued ...
-
-Then you can run the following command to see how this algorithm works exactly
-
-```bash radix_sort_solution.sh <numbers> ```
-
-For example
-
-```bash radix_sort_solution.sh 9 4 8 7 ```
-
-will show you how we sort 9 4 8 7 with radix sort
-
-### Test Radix Sort
-
-Now you finish your radix sort algorithm and you want to test it ?
-
-```bash radix_sort_test.sh <numbers>```
-
-For example
-
-```bash radix_sort_test.sh 9 4 8 7 1 2 3```
-
-will show you how your push_swap sort these numbers, and those numbers will be simplified and in base 2
+or DM me on the slack
