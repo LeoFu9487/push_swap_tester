@@ -10,7 +10,7 @@ First, go to the root of your repository, which is where we can find your Makefi
 
 Then there are two modes of test :
 
-###### 1. loop mode
+###### 1. Loop Mode
 
 ```bash loop.sh <stack size> <loop times>```
 
@@ -21,7 +21,7 @@ result of the following command
 ![example](https://user-images.githubusercontent.com/70040774/118051305-0b7fa580-b381-11eb-9568-36b44748b10f.png)
 
 
-###### 2. debug mode
+###### 2. Debug Mode
 
 generate and visualize random numbers : 
 
@@ -69,7 +69,7 @@ yfu@student.42lyon.fr
 
 Or you can also DM me on the slack
 
-### Visualize radix sort`
+### Visualize Radix Sort
 
 First, read the algorithm in the following article :
 
@@ -90,3 +90,15 @@ For example
 ```bash radix_sort_solution.sh 9 4 8 7 ```
 
 will show you how we sort 9 4 8 7 with radix sort
+
+### Test Radix Sort
+
+Now you finish your radix sort algorithm and you want to test it ?
+
+```bash radix_sort_test.sh <numbers>```
+
+For example
+
+```bash radix_sort_test.sh 9 4 8 7 1 2 3```
+
+will show you how your push_swap sort these numbers, and those numbers will be simplified and in base 2
