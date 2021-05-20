@@ -94,7 +94,9 @@ then
 	printf "${RED}TLE${NOCOLOR}\n"
 	FLAG="${RED}KO${NOCOLOR}"
 else
+printf "${RED}"
 cat ./trace_loop/output_$i.txt | ./files/checker $(cat ./trace_loop/test_case_$i.txt) > temp_result
+printf "${NOCOLOR}"
 temp=$(cat temp_result)
 if [[ "$temp" = "OK" ]]
 then
@@ -102,6 +104,8 @@ then
 elif [[ "$temp" = "KO" ]]
 then
 	printf "${RED}KO${NOCOLOR}\n"
+	FLAG="${RED}KO${NOCOLOR}"
+else
 	FLAG="${RED}KO${NOCOLOR}"
 fi
 fi

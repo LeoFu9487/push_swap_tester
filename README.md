@@ -69,16 +69,24 @@ yfu@student.42lyon.fr
 
 Or you can also DM me on the slack
 
-### Visualize radix sort
+### Visualize radix sort`
 
-This is a visualization for this article
+First, read the algorithm in the following article :
+
+Chinese version :
 
 https://medium.com/台灣人-ecole42/cursus-push-swap-582d5108c537
 
-Type following command and you'll see
+English version : 
 
-```bash visualize_radix_sort.sh <numbers> ```
+To be continued ...
+
+Then you can run the following command to see how this algorithm works exactly
+
+```bash radix_sort_solution.sh <numbers> ```
 
 For example
 
-```bash visualize_radix_sort.sh 9 4 8 7 ```
+```bash radix_sort_solution.sh 9 4 8 7 ```
+
+will show you how we sort 9 4 8 7 with radix sort
