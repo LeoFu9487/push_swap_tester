@@ -39,7 +39,7 @@ do
 		diff e stderr > x
 		if [[ -s x ]]
 		then
-			printf "${RED}KO, Output message in stderr is wrong${NOCOLOR}"
+			printf "${RED}KO, Output message in stderr is wrong\n${NOCOLOR}"
 		else
 			printf "${GREEN}OK${NOCOLOR}\n"
 		fi
