@@ -17,6 +17,7 @@ confirm() {
             clear
             ;;
         *)
+			printf "EXIT\n"
             exit 0
             ;;
     esac
@@ -218,4 +219,28 @@ done
 	printf "IDENTITY_TEST\n\nresult : $FLAG\nmemory : $LEAKFLAG\n\n\n"
 
 	confirm
+
+FLAG="${GREEN}OK${NOCOLOR}"
+LEAKFLAG="${GREEN}NO LEAKS${NOCOLOR}"
+
+make -C ./files/
+
+clear
+
+printf "________SMALL_______STACK_______TEST________\n\n"
+
+printf "SIZE 3 (sort with not more than 3 operations otherwise KO) : \n\n"
+
+for i in {1..5}
+do
+	printf "test_case_$i\n\n"
+	$ROOT/push_swap "$(cat $TRACE/size3/test_case_$i.txt)" >stdout 2>stderr
+	if [[ -s stderr ]];
+	then
+		printf "${RED}KO, stderr must be empty${NOCOLOR}\n"
+	else
+		./files/checker "$(cat $TRACE/size3/test_case_$i.txt)" < stdout
+	fi
+	rm -rf stdout stderr
+done
 #TLE, LEAKS, check ROOT
