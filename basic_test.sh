@@ -1,4 +1,4 @@
-ROOT=../../42_new
+ROOT=..
 TRACE=./trace_basic
 
 RED='\033[0;31m'
