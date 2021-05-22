@@ -66,15 +66,15 @@ do
 	rm -rf stdout stderr a b
 	leaks -atExit -- $ROOT/push_swap $(cat $TRACE/error_files/test_case_$i.txt) 1>a 2>b
 	grep ": 0 leaks for 0 total leaked bytes" a > x
-	grep "command not found" b > y
+	grep "not found" b > y
 	if [[ -s x ]];
 	then
 		TEMPLEAK="${GREEN}NO LEAKS${NOCOLOR}"
 	else
 		if [[ -s y ]];
 		then
-			TEMPLEAK="Valgrind not found"
-			LEAKFLAG="Valgrind not found"
+			TEMPLEAK="leaks command not found"
+			LEAKFLAG="leaks command not found"
 		else
 			TEMPLEAK="${RED}LEAKS	${NOCOLOR}"
 			LEAKFLAG="${RED}LEAKS	${NOCOLOR}"
@@ -109,15 +109,15 @@ do
 	rm -rf stdout stderr
 	leaks -atExit -- $ROOT/push_swap "$(cat $TRACE/error_files/test_case_$i.txt)" 1>a 2>b
 	grep ": 0 leaks for 0 total leaked bytes" a > x
-	grep "command not found" b > y
+	grep "not found" b > y
 	if [[ -s x ]];
 	then
 		TEMPLEAK="${GREEN}NO LEAKS${NOCOLOR}"
 	else
 		if [[ -s y ]];
 		then
-			TEMPLEAK="Valgrind not found"
-			LEAKFLAG="Valgrind not found"
+			TEMPLEAK="leaks command not found"
+			LEAKFLAG="leaks command not found"
 		else
 			TEMPLEAK="${RED}LEAKS	${NOCOLOR}"
 			LEAKFLAG="${RED}LEAKS	${NOCOLOR}"
@@ -154,15 +154,15 @@ printf "test_case_16\n\n"
 	rm -rf stdout stderr
 	leaks -atExit -- $ROOT/push_swap "123 1 2" "654 456 123" 1>a 2>b
 	grep ": 0 leaks for 0 total leaked bytes" a > x
-	grep "command not found" b > y
+	grep "not found" b > y
 	if [[ -s x ]];
 	then
 		TEMPLEAK="${GREEN}NO LEAKS${NOCOLOR}"
 	else
 		if [[ -s y ]];
 		then
-			TEMPLEAK="Valgrind not found"
-			LEAKFLAG="Valgrind not found"
+			TEMPLEAK="leaks command not found"
+			LEAKFLAG="leaks command not found"
 		else
 			TEMPLEAK="${RED}LEAKS	${NOCOLOR}"
 			LEAKFLAG="${RED}LEAKS	${NOCOLOR}"
@@ -198,15 +198,15 @@ do
 	rm -rf stderr stdout
 	leaks -atExit -- $ROOT/push_swap "$(cat $TRACE/identity_files/test_case_$i.txt)" 1>a 2>b
 	grep ": 0 leaks for 0 total leaked bytes" a > x
-	grep "command not found" b > y
+	grep "not found" b > y
 	if [[ -s x ]];
 	then
 		TEMPLEAK="${GREEN}NO LEAKS${NOCOLOR}"
 	else
 		if [[ -s y ]];
 		then
-			TEMPLEAK="Valgrind not found"
-			LEAKFLAG="Valgrind not found"
+			TEMPLEAK="leaks command not found"
+			LEAKFLAG="leaks command not found"
 		else
 			TEMPLEAK="${RED}LEAKS	${NOCOLOR}"
 			LEAKFLAG="${RED}LEAKS	${NOCOLOR}"
@@ -267,15 +267,15 @@ do
 	rm -rf stdout stderr result error_result ok aa
 	leaks -atExit -- "$(cat $TRACE/size3/test_case_$i.txt)" 1>a 2>b
 	grep ": 0 leaks for 0 total leaked bytes" a > x
-	grep "command not found" b > y
+	grep "not found" b > y
 	if [[ -s x ]];
 	then
 		TEMPLEAK="${GREEN}NO LEAKS${NOCOLOR}"
 	else
 		if [[ -s y ]];
 		then
-			TEMPLEAK="Valgrind not found"
-			LEAKFLAG="Valgrind not found"
+			TEMPLEAK="leaks command not found"
+			LEAKFLAG="leaks command not found"
 		else
 			TEMPLEAK="${RED}LEAKS	${NOCOLOR}"
 			LEAKFLAG="${RED}LEAKS	${NOCOLOR}"
@@ -334,15 +334,15 @@ do
 	rm -rf stdout stderr result error_result ok aa
 	leaks -atExit -- "$(cat $TRACE/size5/test_case_$i.txt)" 1>a 2>b
 	grep ": 0 leaks for 0 total leaked bytes" a > x
-	grep "command not found" b > y
+	grep "not found" b > y
 	if [[ -s x ]];
 	then
 		TEMPLEAK="${GREEN}NO LEAKS${NOCOLOR}"
 	else
 		if [[ -s y ]];
 		then
-			TEMPLEAK="Valgrind not found"
-			LEAKFLAG="Valgrind not found"
+			TEMPLEAK="leaks command not found"
+			LEAKFLAG="leaks command not found"
 		else
 			TEMPLEAK="${RED}LEAKS	${NOCOLOR}"
 			LEAKFLAG="${RED}LEAKS	${NOCOLOR}"

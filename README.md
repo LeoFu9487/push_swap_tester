@@ -55,11 +55,11 @@ OK : Answer Correct
 
 KO : Wrong Answer
 
-TLE : Time Limit Exceeded (You can edit the variable ```TIME_LIMIT``` in *.sh file)
+TLE : Time Limit Exceeded, please check if there is an infinite loop in your program (or you can edit the variable ```TIME_LIMIT``` in *.sh file)
 
 ERROR : Unknown Instructions
 
-Valgrind not found : can't test your memory with command ```leaks```
+leaks command not found : can't test your memory with command ```leaks```
 
 ### Clean
 

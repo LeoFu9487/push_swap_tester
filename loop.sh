@@ -58,8 +58,8 @@ then
 else
 	if [[ -s c ]];
 	then
-		TEMPLEAK="Valgrind not found"
-		LEAKFLAG="Valgrind not found"
+		TEMPLEAK="leaks command not found	"
+		LEAKFLAG="leaks command not found	"
 	else
 	TEMPLEAK="${RED}LEAKS	${NOCOLOR}"
 	LEAKFLAG="${RED}LEAKS	${NOCOLOR}"
