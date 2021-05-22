@@ -1,4 +1,4 @@
-ROOT=..
+ROOT=../../42_new
 TRACE=./trace_basic
 
 RED='\033[0;31m'
@@ -229,7 +229,7 @@ clear
 
 printf "________SMALL_______STACK_______TEST________\n\n"
 
-printf "SIZE 3 (sort with not more than 3 operations otherwise KO) : \n\n"
+printf "SIZE 3 (sort with not more than 3 operations) : \n\n"
 
 for i in {1..5}
 do
@@ -238,9 +238,121 @@ do
 	if [[ -s stderr ]];
 	then
 		printf "${RED}KO, stderr must be empty${NOCOLOR}\n"
+		FLAG="${RED}KO${NOCOLOR}"
 	else
-		./files/checker "$(cat $TRACE/size3/test_case_$i.txt)" < stdout
+		./files/checker "$(cat $TRACE/size3/test_case_$i.txt)" < stdout 1> result 2>error_result
+		echo "OK" > ok
+		if [[ -s error_result ]];
+		then
+			printf "${RED}Error${NOCOLOR}\n\n"
+			FLAG="${RED}KO${NOCOLOR}"
+		else
+			diff ok result > aa
+			if [[ -s aa ]];
+			then
+				printf "${RED}KO, not sorted${NOCOLOR}\n\n"
+				FLAG="${RED}KO${NOCOLOR}"
+			else
+				amount=$(wc -l < stdout)
+				if [[ $amount -gt 3 ]]
+				then
+					printf "${RED}KO, $amount operations are not acceptable${NOCOLOR}\n\n"
+					FLAG="${RED}KO${NOCOLOR}"
+				else
+					printf "${GREEN}OK, sorted with $amount operations${NOCOLOR}\n\n"
+				fi
+			fi
+		fi
 	fi
-	rm -rf stdout stderr
+	rm -rf stdout stderr result error_result ok aa
+	leaks -atExit -- "$(cat $TRACE/size3/test_case_$i.txt)" 1>a 2>b
+	grep ": 0 leaks for 0 total leaked bytes" a > x
+	grep "command not found" b > y
+	if [[ -s x ]];
+	then
+		TEMPLEAK="${GREEN}NO LEAKS${NOCOLOR}"
+	else
+		if [[ -s y ]];
+		then
+			TEMPLEAK="Valgrind not found"
+			LEAKFLAG="Valgrind not found"
+		else
+			TEMPLEAK="${RED}LEAKS	${NOCOLOR}"
+			LEAKFLAG="${RED}LEAKS	${NOCOLOR}"
+		fi
+	fi
+	printf "$TEMPLEAK\n\n"
+	rm -rf a b x y
 done
-#TLE, LEAKS, check ROOT
+
+printf "SIZE_3_TEST\n\nresult : $FLAG\nmemory : $LEAKFLAG\n\n\n"
+
+confirm
+
+FLAG="${GREEN}OK${NOCOLOR}"
+LEAKFLAG="${GREEN}NO LEAKS${NOCOLOR}"
+
+clear
+
+printf "________SMALL_______STACK_______TEST________\n\n"
+
+printf "SIZE 5 (sort with not more than 12 operations) : \n\n"
+
+for i in {1..119}
+do
+	printf "test_case_$i\n\n"
+	$ROOT/push_swap "$(cat $TRACE/size5/test_case_$i.txt)" >stdout 2>stderr
+	if [[ -s stderr ]];
+	then
+		printf "${RED}KO, stderr must be empty${NOCOLOR}\n"
+		FLAG="${RED}KO${NOCOLOR}"
+	else
+		./files/checker "$(cat $TRACE/size5/test_case_$i.txt)" < stdout 1> result 2>error_result
+		echo "OK" > ok
+		if [[ -s error_result ]];
+		then
+			printf "${RED}Error${NOCOLOR}\n\n"
+			FLAG="${RED}KO${NOCOLOR}"
+		else
+			diff ok result > aa
+			if [[ -s aa ]];
+			then
+				printf "${RED}KO, not sorted${NOCOLOR}\n\n"
+				FLAG="${RED}KO${NOCOLOR}"
+			else
+				amount=$(wc -l < stdout)
+				if [[ $amount -gt 12 ]]
+				then
+					printf "${RED}KO, $amount operations are not acceptable${NOCOLOR}\n\n"
+					FLAG="${RED}KO${NOCOLOR}"
+				else
+					printf "${GREEN}OK, sorted with $amount operations${NOCOLOR}\n\n"
+				fi
+			fi
+		fi
+	fi
+	rm -rf stdout stderr result error_result ok aa
+	leaks -atExit -- "$(cat $TRACE/size5/test_case_$i.txt)" 1>a 2>b
+	grep ": 0 leaks for 0 total leaked bytes" a > x
+	grep "command not found" b > y
+	if [[ -s x ]];
+	then
+		TEMPLEAK="${GREEN}NO LEAKS${NOCOLOR}"
+	else
+		if [[ -s y ]];
+		then
+			TEMPLEAK="Valgrind not found"
+			LEAKFLAG="Valgrind not found"
+		else
+			TEMPLEAK="${RED}LEAKS	${NOCOLOR}"
+			LEAKFLAG="${RED}LEAKS	${NOCOLOR}"
+		fi
+	fi
+	printf "$TEMPLEAK\n\n"
+	rm -rf a b x y
+done
+
+printf "SIZE_5_TEST\n\nresult : $FLAG\nmemory : $LEAKFLAG\n\n\n"
+
+
+#TLE, LEAKS, check ROOT, amounts of operation
