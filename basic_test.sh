@@ -301,7 +301,9 @@ do
 		fi
 	fi
 	rm -rf stdout stderr result error_result ok aa
-	leaks -atExit -- "$(cat $TRACE/size3/test_case_$i.txt)" 1>a 2>b
+	(leaks -atExit -- $ROOT/push_swap "$(cat $TRACE/size3/test_case_$i.txt)" 1>a 2>b) & pid=$!
+	(sleep $TIME_LIMIT && kill -HUP $pid) 2>/dev/null & watcher=$!
+	wait $pid 2>/dev/null;
 	grep ": 0 leaks for 0 total leaked bytes" a > x
 	grep "not found" b > y
 	if [[ -s x ]];
@@ -379,7 +381,9 @@ do
 		fi
 	fi
 	rm -rf stdout stderr result error_result ok aa
-	leaks -atExit -- "$(cat $TRACE/size5/test_case_$i.txt)" 1>a 2>b
+	(leaks -atExit -- $ROOT/push_swap "$(cat $TRACE/size5/test_case_$i.txt)" 1>a 2>b) & pid=$!
+	(sleep $TIME_LIMIT && kill -HUP $pid) 2>/dev/null & watcher=$!
+	wait $pid 2>/dev/null;
 	grep ": 0 leaks for 0 total leaked bytes" a > x
 	grep "not found" b > y
 	if [[ -s x ]];
