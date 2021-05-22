@@ -2,32 +2,36 @@
 
 ### Usage :
 
-First, go to the root of your repository, which is where we can find your Makefile
+First, go to the root of your repository, which is where we can find your Makefile and do
 
 ```git clone https://github.com/LeoFu9487/push_swap_tester.git```
 
 ```cd push_swap_tester```
 
-Then there are two modes of test :
+And then run
 
-###### 1. Loop Mode
+```bash basic_test.sh```
+
+to see if you pass the parsing test (ERROR_TEST), identity test, and small stack test (size 3 and 5)
+
+After that, you can run medium and big stack test with this command
 
 ```bash loop.sh <stack size> <loop times>```
 
-result of the following command
+For example, this is the result of the following command
 
 ```bash loop.sh 100 10```
 
 ![example](https://user-images.githubusercontent.com/70040774/118051305-0b7fa580-b381-11eb-9568-36b44748b10f.png)
 
 
-###### 2. Debug Mode
+###### Debug
 
-generate and visualize random numbers : 
+To generate and visualize how your program sorts random numbers, run  
 
 ```bash debug.sh <stack size>```
 
-result of the following command
+this is the result of the following command
 
 ```bash debug.sh 10```
 
@@ -39,7 +43,7 @@ generate and visualize numbers from 0 to n - 1
 
 ```bash debug.sh clean <stack size>```
 
-result of the following command
+this is the result of the following command
 
 ```bash debug.sh clean 10```
 
