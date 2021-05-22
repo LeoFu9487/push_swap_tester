@@ -1,6 +1,6 @@
 # push_swap_tester
 
-### Usage :
+### Usage
 
 First, go to the root of your repository, which is where we can find your Makefile and do
 
