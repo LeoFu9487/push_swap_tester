@@ -25,7 +25,7 @@ For example, this is the result of the following command
 ![example](https://user-images.githubusercontent.com/70040774/118051305-0b7fa580-b381-11eb-9568-36b44748b10f.png)
 
 
-###### Debug
+### Debug
 
 To generate and visualize how your program sorts random numbers, run  
 
