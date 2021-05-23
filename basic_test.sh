@@ -28,7 +28,7 @@ if [[ -f "$ROOT/push_swap" ]]
 then
 	printf "${GREEN}push_swap compilation ok${NOCOLOR}\n\n"
 else
-	printf "${RED}push_swap compilation ko${NOCOLOR}\n\n"
+	printf "${RED}push_swap compilation ko${NOCOLOR}\ncheck if the variable ROOT in basic_test.sh is correct\n"
 	exit 1
 fi
 

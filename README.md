@@ -14,7 +14,7 @@ And then run
 
 to see if you pass the parsing test (ERROR_TEST), identity test, and small stack test (size 3 and 5)
 
-After that, you can run medium and big stack test with this command
+After that, you can do medium and big stack test with this command
 
 ```bash loop.sh <stack size> <loop times>```
 

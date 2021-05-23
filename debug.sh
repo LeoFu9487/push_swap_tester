@@ -1,5 +1,7 @@
 #add leaks test
 
+ROOT=..
+
 RED="\e[31m"
 GREEN="\e[32m"
 NOCOLOR="\e[0m"
@@ -12,25 +14,28 @@ then
 	g++ -O3 ./files/gen.cpp -o ./files/generate_clean_test_cases
 	./files/generate_clean_test_cases $2 > ./trace_debug/test_case.txt
 	rm -rf ./files/generate_clean_test_cases
+elif [[ "$1" = "customize" ]]
+then
+	echo "${@:2}" > ./trace_debug/test_case.txt
 else
 	g++ -O3 ./files/main.cpp -o ./files/better_random_test_cases
 	./files/better_random_test_cases $1 > ./trace_debug/test_case.txt
 	rm -rf ./files/better_random_test_cases
 fi
 
-make -C ../
+make -C $ROOT/
 
 clear
 
-if [[ -f "../push_swap" ]]
+if [[ -f "$ROOT/push_swap" ]]
 then
 	printf "${GREEN}push_swap compilation ok${NOCOLOR}\n\n"
 else
-	printf "${RED}push_swap compilation ko${NOCOLOR}\n\n"
+	printf "${RED}push_swap compilation ko${NOCOLOR}\ncheck if the variable ROOT in debug.sh is correct\n"
 	exit 1
 fi
 
-(../push_swap $(cat ./trace_debug/test_case.txt) > ./trace_debug/output.txt) & pid=$!
+($ROOT/push_swap $(cat ./trace_debug/test_case.txt) > ./trace_debug/output.txt) & pid=$!
 (sleep $TIME_LIMIT && kill -HUP $pid) 2>/dev/null & watcher=$!
 if wait $pid 2>/dev/null; then
 	TLEFLAG=0

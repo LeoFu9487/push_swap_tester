@@ -1,3 +1,5 @@
+ROOT=..
+
 RED="\e[31m"
 GREEN="\e[32m"
 NOCOLOR="\e[0m"
@@ -17,16 +19,16 @@ do
 ./files/better_random_test_cases $@ > ./trace_loop/test_case_$i.txt
 done
 
-make -C ../
+make -C $ROOT/
 
 clear
 
 
-if [[ -f "../push_swap" ]]
+if [[ -f "$ROOT/push_swap" ]]
 then
 	printf "${GREEN}push_swap compilation ok${NOCOLOR}\n\n"
 else
-	printf "${RED}push_swap compilation ko${NOCOLOR}\n\n"
+	printf "${RED}push_swap compilation ko${NOCOLOR}\ncheck if the variable ROOT in loop.sh is correct\n"
 	exit 1
 fi
 
@@ -40,7 +42,7 @@ LEAKFLAG="${GREEN}NO LEAKS${NOCOLOR}"
 for ((i=1;i<=$2;i++));
 do
 printf "$i	"
-(../push_swap $(cat ./trace_loop/test_case_$i.txt) > ./trace_loop/output_$i.txt) & pid=$!
+($ROOT/push_swap $(cat ./trace_loop/test_case_$i.txt) > ./trace_loop/output_$i.txt) & pid=$!
 (sleep $TIME_LIMIT && kill -HUP $pid) 2>/dev/null & watcher=$!
 if wait $pid 2>/dev/null; then
 	TLEFLAG=0
@@ -50,7 +52,7 @@ fi
 
 if [[ "$TLEFLAG" = "0" ]];
 then
-leaks -atExit -- ../push_swap $(cat ./trace_loop/test_case_$i.txt) > a 2>c
+leaks -atExit -- $ROOT/push_swap $(cat ./trace_loop/test_case_$i.txt) > a 2>c
 cat a | grep ": 0 leaks for 0 total leaked bytes" > b
 if [[ -s b ]];
 then
