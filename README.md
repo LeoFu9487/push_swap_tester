@@ -37,9 +37,7 @@ this is the result of the following command
 
 ![example2](https://user-images.githubusercontent.com/70040774/118052309-cceaea80-b382-11eb-8c9d-39675e9143ba.png)
 
-or
-
-generate a permutation of numbers from 0 to n-1
+or generate a permutation of numbers from 0 to n-1
 
 ```bash debug.sh clean <stack size>```
 
