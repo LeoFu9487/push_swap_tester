@@ -36,12 +36,18 @@ else
 	exit 1
 fi
 
-($ROOT/push_swap $(cat ./trace_debug/test_case.txt) > ./trace_debug/output.txt) & pid=$!
+($ROOT/push_swap $(cat ./trace_debug/test_case.txt) > ./trace_debug/output.txt 2>stderr) & pid=$!
 (sleep $TIME_LIMIT && kill -HUP $pid) 2>/dev/null & watcher=$!
 if wait $pid 2>/dev/null; then
 	TLEFLAG=0
 else
-	printf "${RED}TLE${NOCOLOR}\n"
+	if [[ -s stderr ]]
+	then
+		printf "${RED}Error${NOCOLOR}\n"
+	else
+		printf "${RED}TLE${NOCOLOR}\n"
+	fi
+	rm -rf stderr
 	exit 1
 fi
 
