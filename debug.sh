@@ -14,13 +14,13 @@ then
 	g++ -O3 ./files/gen.cpp -o ./files/generate_clean_test_cases
 	./files/generate_clean_test_cases $2 > ./trace_debug/test_case.txt
 	rm -rf ./files/generate_clean_test_cases
-elif [[ "$1" = "customize" ]]
+elif [[ "$1" = "random" ]]
 then
-	echo "${@:2}" > ./trace_debug/test_case.txt
-else
 	g++ -O3 ./files/main.cpp -o ./files/better_random_test_cases
-	./files/better_random_test_cases $1 > ./trace_debug/test_case.txt
+	./files/better_random_test_cases $2 > ./trace_debug/test_case.txt
 	rm -rf ./files/better_random_test_cases
+else
+	echo "$@" > ./trace_debug/test_case.txt
 fi
 
 make -C $ROOT/
