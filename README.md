@@ -4,15 +4,13 @@
 
 First, go to the root of your repository, which is where we can find your Makefile and do
 
-```git clone https://github.com/LeoFu9487/push_swap_tester.git```
+```git clone https://github.com/LeoFu9487/push_swap_tester.git && cd push_swap_tester```
 
-```cd push_swap_tester```
 
-And then run
+To see if you pass the parsing test (ERROR_TEST), identity test, and small stack test (size 3 and 5), run
+
 
 ```bash basic_test.sh```
-
-to see if you pass the parsing test (ERROR_TEST), identity test, and small stack test (size 3 and 5)
 
 After that, you can do medium and big stack test with this command
 
@@ -27,17 +25,27 @@ For example, this is the result of the following command
 
 ### Debug
 
+To visualize how your program sorts numbers
+
+```bash debug.sh <numbers>```
+
+This is the result of the following command
+
+```bash debug.sh 9 4 8 7```
+
+![debugsh](https://user-images.githubusercontent.com/70040774/119276699-d6464380-bc1b-11eb-8c03-fe01a11b494f.png)
+
 To generate random numbers and visualize how your program sorts them, run  
 
-```bash debug.sh <stack size>```
+```bash debug.sh random <stack size>```
 
-this is the result of the following command
+This is the result of the following command
 
-```bash debug.sh 10```
+```bash debug.sh random 10```
 
 ![example2](https://user-images.githubusercontent.com/70040774/118052309-cceaea80-b382-11eb-8c9d-39675e9143ba.png)
 
-or generate a permutation of numbers from 0 to n-1
+To generate a permutation of numbers from 0 to n-1
 
 ```bash debug.sh clean <stack size>```
 
