@@ -1,11 +1,12 @@
-#add leaks test
-
 ROOT=..
+TIME_LIMIT=2.0
+
+
+
 
 RED="\e[31m"
 GREEN="\e[32m"
 NOCOLOR="\e[0m"
-TIME_LIMIT=2.0
 
 make bonus -C ./files/
 

@@ -1,6 +1,10 @@
 ROOT=..
 TIME_LIMIT=1
 
+
+
+
+
 TRACE=./trace_basic
 RED='\033[0;31m'
 GREEN='\033[0;32m'
