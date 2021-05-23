@@ -27,7 +27,7 @@ For example, this is the result of the following command
 
 ### Debug
 
-To generate and visualize how your program sorts random numbers, run  
+To generate random numbers and visualize how your program sorts them, run  
 
 ```bash debug.sh <stack size>```
 
@@ -39,7 +39,7 @@ this is the result of the following command
 
 or
 
-generate and visualize numbers from 0 to n - 1
+generate a permutation of numbers from 0 to n-1
 
 ```bash debug.sh clean <stack size>```
 
