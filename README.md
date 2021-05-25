@@ -65,7 +65,7 @@ TLE : Time Limit Exceeded, please check if there is an infinite loop in your pro
 
 ERROR : Unknown Instructions
 
-leaks command not found : can't test your memory with command ```leaks```
+leaks command not found : can't test your memory with command ```leaks``` (If you're using MacOS but still receiving this, remove ```-fsanitize=address``` flag in your Makefile )
 
 ### Clean
 
