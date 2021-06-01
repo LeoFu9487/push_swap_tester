@@ -7,10 +7,16 @@ First, go to the root of your repository, which is where we can find your Makefi
 ```git clone https://github.com/LeoFu9487/push_swap_tester.git && cd push_swap_tester```
 
 
+
+
 To see if you pass the parsing test (ERROR_TEST), identity test, and small stack test (size 3 and 5), run
 
-
 ```bash basic_test.sh```
+
+
+
+If you want to see the test cases, check ```trace_basic```
+
 
 After that, you can do medium and big stack test with this command
 
@@ -22,6 +28,7 @@ For example, this is the result of the following command
 
 ![example](https://user-images.githubusercontent.com/70040774/118051305-0b7fa580-b381-11eb-9568-36b44748b10f.png)
 
+And you can find those generated test cases and the output of your program in ```trace_loop```
 
 ### Debug
 
