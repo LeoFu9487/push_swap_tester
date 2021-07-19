@@ -40,7 +40,6 @@ declare -i max=0
 declare -i min=1000000000
 
 FLAG="${GREEN}OK${NOCOLOR}"
-LEAKFLAG="${GREEN}NO LEAKS${NOCOLOR}"
 for ((i=1;i<=$2;i++));
 do
 printf "$i	"
@@ -52,30 +51,6 @@ else
 	TLEFLAG=1
 fi
 
-if [[ "$TLEFLAG" = "0" ]];
-then
-leaks -atExit -- $ROOT/push_swap $(cat ./trace_loop/test_case_$i.txt) > a 2>c
-cat a | grep ": 0 leaks for 0 total leaked bytes" > b
-if [[ -s b ]];
-then
-	TEMPLEAK="${GREEN}NO LEAKS${NOCOLOR}"
-else
-	if [[ -s c ]];
-	then
-		TEMPLEAK="leaks command not found	"
-		LEAKFLAG="leaks command not found	"
-	else
-	TEMPLEAK="${RED}LEAKS	${NOCOLOR}"
-	LEAKFLAG="${RED}LEAKS	${NOCOLOR}"
-	fi
-fi
-rm -rf a
-rm -rf b
-rm -rf c
-printf "$TEMPLEAK	"
-else
-printf "		"
-fi
 #add timeout
 
 printf "instructions amounts : "
@@ -124,6 +99,5 @@ printf "total instructions	$total\n"
 printf "maximum instructions	$max (test case $max_tag)\n"
 printf "minimum instructions	$min (test case $min_tag)\n"
 printf "average instructions	$average\n"
-printf "memory			$LEAKFLAG\n"
 echo "test_case and output are in trace_loop"
 rm ./files/better_random_test_cases
