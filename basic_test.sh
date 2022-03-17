@@ -18,7 +18,7 @@ confirm() {
     # call with a prompt string or use a default
     read -r -p "${1:-Continue? [y/N]} " response
     case "$response" in
-        [yY][eE][sS]|[yY]) 
+        [yY][eE][sS]|[yY])
             clear
             ;;
         *)
@@ -92,7 +92,7 @@ do
 	printf "$TEMPLEAK\n"
 	rm -rf a b x y
 	printf "\none argument\n\n"
-	($ROOT/push_swap "$(cat $TRACE/error_files/test_case_$i.txt)" >stdout 2>stderr) & pid=$!
+	($ROOT/push_swap $(cat $TRACE/error_files/test_case_$i.txt) >stdout 2>stderr) & pid=$!
 	(sleep $TIME_LIMIT && kill -HUP $pid) 2>/dev/null & watcher=$!
 	wait $pid 2>/dev/null;
 	if [[ -s stdout ]];
@@ -118,7 +118,7 @@ do
 		FLAG="${RED}KO${NOCOLOR}"
 	fi
 	rm -rf stdout stderr
-	(leaks -atExit -- $ROOT/push_swap "$(cat $TRACE/error_files/test_case_$i.txt)" 1>a 2>b) & pid=$!
+	(leaks -atExit -- $ROOT/push_swap $(cat $TRACE/error_files/test_case_$i.txt) 1>a 2>b) & pid=$!
 	(sleep $TIME_LIMIT && kill -HUP $pid) 2>/dev/null & watcher=$!
 	wait $pid 2>/dev/null;
 	grep ": 0 leaks for 0 total leaked bytes" a > x
@@ -200,7 +200,7 @@ printf "__________IDENTITY_______________TEST_____________\n\n"
 for ((i=1;i<=9;i++));
 do
 	printf "test_case_$i\n\n"
-	($ROOT/push_swap "$(cat $TRACE/identity_files/test_case_$i.txt)" >stdout 2>stderr) & pid=$!
+	($ROOT/push_swap $(cat $TRACE/identity_files/test_case_$i.txt) >stdout 2>stderr) & pid=$!
 	(sleep $TIME_LIMIT && kill -HUP $pid) 2>/dev/null & watcher=$!
 	if wait $pid 2>/dev/null; then
 		TLEFLAG=0
@@ -223,7 +223,7 @@ do
 		printf "${GREEN}OK${NOCOLOR}\n"
 	fi
 	rm -rf stderr stdout
-	(leaks -atExit -- $ROOT/push_swap "$(cat $TRACE/identity_files/test_case_$i.txt)" 1>a 2>b) & pid=$!
+	(leaks -atExit -- $ROOT/push_swap $(cat $TRACE/identity_files/test_case_$i.txt) 1>a 2>b) & pid=$!
 	(sleep $TIME_LIMIT && kill -HUP $pid) 2>/dev/null & watcher=$!
 	wait $pid 2>/dev/null;
 	grep ": 0 leaks for 0 total leaked bytes" a > x
@@ -263,7 +263,7 @@ printf "SIZE 3 (sort with not more than 3 operations) : \n\n"
 for i in {1..5}
 do
 	printf "test_case_$i\n\n"
-	($ROOT/push_swap "$(cat $TRACE/size3/test_case_$i.txt)" >stdout 2>stderr) & pid=$!
+	($ROOT/push_swap $(cat $TRACE/size3/test_case_$i.txt) >stdout 2>stderr) & pid=$!
 	(sleep $TIME_LIMIT && kill -HUP $pid) 2>/dev/null & watcher=$!
 	if wait $pid 2>/dev/null; then
 		TLEFLAG=0
@@ -305,7 +305,7 @@ do
 		fi
 	fi
 	rm -rf stdout stderr result error_result ok aa
-	(leaks -atExit -- $ROOT/push_swap "$(cat $TRACE/size3/test_case_$i.txt)" 1>a 2>b) & pid=$!
+	(leaks -atExit -- $ROOT/push_swap $(cat $TRACE/size3/test_case_$i.txt) 1>a 2>b) & pid=$!
 	(sleep $TIME_LIMIT && kill -HUP $pid) 2>/dev/null & watcher=$!
 	wait $pid 2>/dev/null;
 	grep ": 0 leaks for 0 total leaked bytes" a > x
@@ -343,7 +343,7 @@ printf "SIZE 5 (sort with not more than 12 operations) : \n\n"
 for i in {1..119}
 do
 	printf "test_case_$i\n\n"
-	($ROOT/push_swap "$(cat $TRACE/size5/test_case_$i.txt)" >stdout 2>stderr) & pid=$!
+	($ROOT/push_swap $(cat $TRACE/size5/test_case_$i.txt) >stdout 2>stderr) & pid=$!
 	(sleep $TIME_LIMIT && kill -HUP $pid) 2>/dev/null & watcher=$!
 	if wait $pid 2>/dev/null; then
 		TLEFLAG=0
@@ -385,7 +385,7 @@ do
 		fi
 	fi
 	rm -rf stdout stderr result error_result ok aa
-	(leaks -atExit -- $ROOT/push_swap "$(cat $TRACE/size5/test_case_$i.txt)" 1>a 2>b) & pid=$!
+	(leaks -atExit -- $ROOT/push_swap $(cat $TRACE/size5/test_case_$i.txt) 1>a 2>b) & pid=$!
 	(sleep $TIME_LIMIT && kill -HUP $pid) 2>/dev/null & watcher=$!
 	wait $pid 2>/dev/null;
 	grep ": 0 leaks for 0 total leaked bytes" a > x
