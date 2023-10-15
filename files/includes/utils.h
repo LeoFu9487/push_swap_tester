@@ -25,7 +25,7 @@
 # include <stdlib.h>
 # include "../libft/libft.h"
 
-int				g_size;
+extern int				g_size;
 void			normal_exit(void);
 void			error_exit(void);
 int				get_nbr_in_line(int **arr, int argc, char **argv);
